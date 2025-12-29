@@ -123,7 +123,7 @@ export function Classes() {
                   </h1>
 
                   <h2 className="font-bold text-3xl text-white text-shadow-lg">
-                    R$ 490
+                    R$ 540
                   </h2>
 
                   <p>inclui o planejamento, o material e acompanhamento.</p>
@@ -136,7 +136,7 @@ export function Classes() {
                   </h1>
 
                   <h2 className="font-bold text-3xl text-white text-shadow-lg">
-                    R$ 840
+                    R$ 920
                   </h2>
 
                   <p>inclui o planejamento, o material e acompanhamento.</p>
