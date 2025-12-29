@@ -19,10 +19,12 @@ export function About() {
         <div>
           <Highlight>
             <p>
-              Oi! Meu nome é Amanda Seimetz. Eu sou natural de Farroupilha (RS)
-              e atualmente moro em Porto Alegre (RS). Vivi em Dublin, Irlanda,
-              por dois anos, uma experiência que enriqueceu minha vivência com a
-              língua inglesa.
+              Oi! Meu nome é Amanda Seimetz. Moro em Porto Alegre e ensino
+              inglês desde 2016. Minha trajetória une a vivência real do idioma
+              com uma base teórica sólida: morei dois anos em Dublin, na
+              Irlanda, e sou formada em Letras pela Unisinos. Para oferecer a
+              melhor experiência em sala de aula, também me especializei na
+              PUCRS em metodologias de ensino com foco total no aluno.
             </p>
             <p>
               <em>Ensino inglês desde 2016</em> e me{" "}
