@@ -45,17 +45,33 @@ export function Classes() {
         </ul>
 
         <p className="mb-8">
-          As aulas são elaboradas de acordo com as necessidades individuais de
-          cada aluno. Minha abordagem pedagógica visa criar momentos de
-          aprendizado que te ajudem a atingir seus objetivos, independentemente
-          de quais sejam. Isso significa que não me concentro apenas em uma
-          única habilidade! Sempre planejo aulas que possibilitam a prática de
-          diversas competências de maneira fluida e contextualizada.
+          Esqueça os métodos rígidos. Aqui, o aprendizado acontece no seu tempo
+          e do seu jeito.
         </p>
 
         <p className="mb-8">
-          Atualmente, meu foco está em alunos nos níveis intermediário e
-          avançado que desejam aprender e aprimorar o inglês para o cotidiano.
+          Meu foco é ajudar alunos de nível intermediário e avançado a dominarem
+          o inglês do cotidiano. Para isso, ofereço:
+        </p>
+
+        <p className="mb-8">
+          Aulas Personalizadas: Planejadas exclusivamente para as suas
+          necessidades e objetivos.
+        </p>
+
+        <p className="mb-8">
+          Materiais Dinâmicos e Divertidos: Nada de decoreba. Usamos conteúdos
+          reais e envolventes para praticar diversas competências de forma
+          fluida.
+        </p>
+
+        <p className="mb-8">
+          Feedback Constante: Anotações e correções detalhadas para você
+          acompanhar sua evolução.
+        </p>
+
+        <p className="mb-8">
+          Conveniência: Aulas de 60 minutos via Google Meet, onde você estiver.
         </p>
 
         <div className="flex justify-center mb-20">
