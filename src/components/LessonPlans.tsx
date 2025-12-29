@@ -71,7 +71,7 @@ export const LessonPlans = () => {
 
             <p>
               Para garantir seu material basta fazer o pagamento por pix usando
-              a chave abaixo e enviar o comprovante para o instagram
+              a chave abaixo e enviar o comprovante para o instagram{" "}
               <a href="https://instagram.com/teacherseimetz">
                 @teacherseimetz
               </a>{" "}
