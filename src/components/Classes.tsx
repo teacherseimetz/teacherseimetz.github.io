@@ -46,33 +46,32 @@ export function Classes() {
 
         <p className="mb-8">
           Esqueça os métodos rígidos. Aqui, o aprendizado acontece no seu tempo
-          e do seu jeito.
+          e do seu jeito. Meu foco é ajudar alunos de nível intermediário e
+          avançado a dominarem o inglês do cotidiano. Para isso, ofereço:
         </p>
 
-        <p className="mb-8">
-          Meu foco é ajudar alunos de nível intermediário e avançado a dominarem
-          o inglês do cotidiano. Para isso, ofereço:
-        </p>
+        <ul className="list-disc ml-4 mb-12">
+          <li className="mb-4">
+            Aulas Personalizadas: Planejadas exclusivamente para as suas
+            necessidades e objetivos.
+          </li>
 
-        <p className="mb-8">
-          Aulas Personalizadas: Planejadas exclusivamente para as suas
-          necessidades e objetivos.
-        </p>
+          <li className="mb-4">
+            Materiais Dinâmicos e Divertidos: Nada de decoreba. Usamos conteúdos
+            reais e envolventes para praticar diversas competências de forma
+            fluida.
+          </li>
 
-        <p className="mb-8">
-          Materiais Dinâmicos e Divertidos: Nada de decoreba. Usamos conteúdos
-          reais e envolventes para praticar diversas competências de forma
-          fluida.
-        </p>
+          <li className="mb-4">
+            Feedback Constante: Anotações e correções detalhadas para você
+            acompanhar sua evolução.
+          </li>
 
-        <p className="mb-8">
-          Feedback Constante: Anotações e correções detalhadas para você
-          acompanhar sua evolução.
-        </p>
-
-        <p className="mb-8">
-          Conveniência: Aulas de 60 minutos via Google Meet, onde você estiver.
-        </p>
+          <li className="mb-4">
+            Conveniência: Aulas de 60 minutos via Google Meet, onde você
+            estiver.
+          </li>
+        </ul>
 
         <div className="flex justify-center mb-20">
           <ButtonLink
