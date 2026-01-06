@@ -26,14 +26,6 @@ export function About() {
               melhor experiência em sala de aula, também me especializei na
               PUCRS em metodologias de ensino com foco total no aluno.
             </p>
-            <p>
-              <em>Ensino inglês desde 2016</em> e me{" "}
-              <em>formei em Letras - Inglês</em> pela Unisinos em
-              <em>2020</em>. Em <em>2022</em>, concluí minha{" "}
-              <em>pós-graduação pela PUCRS</em> (Moderna Educação: Metodologias,
-              Tendências E Foco No Aluno) consolidando ainda mais minha formação
-              na área.
-            </p>
           </Highlight>
         </div>
       </section>
