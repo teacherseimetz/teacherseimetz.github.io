@@ -75,7 +75,7 @@ export function Classes() {
 
         <div className="flex justify-center mb-20">
           <ButtonLink
-            href="https://teacherseimetz.notion.site/12ab3dba55da80508dd1eb23da886b42?pvs=105"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdr4AXJRU-Zf1PxlBkGx3SSiHILv3zSBk1vvK4zIfnQrlpZEw/viewform?usp=header"
             target="_blank"
           >
             Quero fazer aulas de inglês
@@ -96,7 +96,7 @@ export function Classes() {
 
             <div className="flex justify-center mb-10">
               <ButtonLink
-                href="https://teacherseimetz.notion.site/12ab3dba55da80508dd1eb23da886b42?pvs=105"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdr4AXJRU-Zf1PxlBkGx3SSiHILv3zSBk1vvK4zIfnQrlpZEw/viewform?usp=header"
                 target="_blank"
               >
                 Quero fazer aulas de inglês
