@@ -13,6 +13,31 @@ html {
   color: var(--color-dark-green);
 }
 
+section[id],
+div[id] {
+  scroll-margin-top: 2rem;
+}
+
+@media (max-width: 63.99rem) {
+  section[id],
+  div[id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 em {
   font-weight: bold;
   font-style: normal;

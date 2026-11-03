@@ -17,13 +17,16 @@ export default function RootLayout({ children }: Props) {
         <Menu />
         {children}
         <Footer />
+        {process.env.NODE_ENV === "production" && (
+          <GoogleAnalytics gaId="G-MB02LDKJ1V" />
+        )}
       </body>
-      <GoogleAnalytics gaId="G-MB02LDKJ1V" />
     </html>
   );
 }
 
 export const metadata: Metadata = {
-  title: "teacher amanda seimetz - professora particular de inglês",
-  description: "teacher amanda seimetz - professora particular de inglês",
+  title: "Teacher Seimetz | Aulas de inglês com Amanda e professores parceiros",
+  description:
+    "Aulas particulares de inglês online com Amanda Seimetz e professores parceiros. Do iniciante ao avançado, para carreira, viagens e dia a dia. Conheça as opções.",
 };

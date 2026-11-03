@@ -2,119 +2,74 @@
 
 import { useRef, useState } from "react";
 import { useClickOutside } from "../hooks/useClickOutside";
+import styles from "./Menu.module.css";
+
+const links = [
+  { href: "#inicio", label: "home" },
+  { href: "#sobre", label: "sobre mim" },
+  { href: "#aulas", label: "aulas" },
+  { href: "#como-funciona", label: "como funciona" },
+  { href: "#professores", label: "professores" },
+  { href: "#eventos", label: "eventos" },
+];
 
 export function Menu() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-
-  const listClassNames = [
-    "bg-white/95",
-    "lg:bg-transparent",
-    "flex",
-    "flex-col",
-    "rounded-lg",
-    "lg:rounded-none",
-    "lg:flex-row",
-    "px-8",
-    "py-4",
-    "gap-2",
-    "lg:gap-6",
-    "justify-end",
-    "text-dark-green",
-    "lg:text-white",
-    "font-bold",
-    "transition",
-    "duration-300",
-    "ease-in-out",
-    !isOpen ? "opacity-[0]" : [],
-    "lg:opacity-100",
-    "shadow-sm",
-    "lg:shadow-none",
-  ]
-    .flatMap((x) => x)
-    .join(" ");
-
-  const strokeColor = isOpen ? "stroke-dark-green" : "stroke-white";
-
   const navRef = useRef<HTMLElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
-  useClickOutside(navRef, () => {
-    setIsOpen(false);
-  });
-
-  const buttonClassNames = [
-    "lg:hidden",
-    "fixed",
-    "top-12",
-    "right-12",
-    isOpen ? "bg-transparent" : "bg-dark-green/50",
-    "p-1",
-    "rounded-sm",
-  ].join(" ");
+  useClickOutside(navRef, () => setIsOpen(false));
 
   return (
     <nav
       ref={navRef}
-      className="p-8 lg:p-0 fixed lg:absolute w-100 lg:w-full top-0 right-0 z-2"
+      aria-label="Navegação principal"
+      className={styles.nav}
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && isOpen) {
+          setIsOpen(false);
+          toggleRef.current?.focus();
+        }
+      }}
     >
-      <ul className={listClassNames}>
-        <li>
-          <a className="block" href="#">
-            home
-          </a>
-        </li>
-        <li>
-          <a className="block" href="#sobre">
-            sobre mim
-          </a>
-        </li>
-        <li>
-          <a className="block" href="#aulas">
-            aulas
-          </a>
-        </li>
-        <li>
-          <a className="block" href="#lessonplans">
-            lesson plans
-          </a>
-        </li>
-        <li>
-          <a className="block" href="#eventos">
-            eventos
-          </a>
-        </li>
-      </ul>
-      <button className={buttonClassNames} onClick={toggleMenu}>
+      <button
+        ref={toggleRef}
+        className={styles.toggle}
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls="menu-links"
+        aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+        type="button"
+      >
         <svg
-          width={36}
-          height={36}
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          aria-hidden="true"
         >
-          <path
-            className={strokeColor}
-            d="M4 7L7 7M20 7L11 7"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <path
-            className={strokeColor}
-            d="M20 17H17M4 17L13 17"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <path
-            className={strokeColor}
-            d="M4 12H7L20 12"
-            stroke="#1C274C"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
+          {isOpen ? (
+            <path d="M6 6L18 18M6 18L18 6" />
+          ) : (
+            <path d="M4 6H20M4 12H20M4 18H20" />
+          )}
         </svg>
-        <span className="sr-only">Abrir menu</span>
       </button>
+      <ul
+        id="menu-links"
+        className={`${styles.links} ${isOpen ? styles.open : ""}`}
+      >
+        {links.map(({ href, label }) => (
+          <li key={href}>
+            <a href={href} onClick={() => setIsOpen(false)}>
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 }

@@ -6,15 +6,19 @@ export function Footer() {
     <footer className={styles.container}>
       <Wrapper className={styles.wrapper}>
         <div className="w-full flex flex-col lg:flex-row justify-between gap-8">
-          <h1 className="font-bold text-4xl lowercase">
+          <h2 className="font-bold text-4xl lowercase">
             Ficou com alguma dúvida?
-          </h1>
+          </h2>
 
-          <nav className={styles.links}>
-            <a href="https://instagram.com/teacherseimetz" rel="norel noopener" target="_blank">
+          <nav aria-label="Contato" className={styles.links}>
+            <a
+              href="https://instagram.com/teacherseimetz"
+              rel="noreferrer noopener"
+              target="_blank"
+            >
               @teacherseimetz
             </a>
-            <a href="mailto:teacherseimetz@gmail.com" rel="norel noopener" target="_blank">
+            <a href="mailto:teacherseimetz@gmail.com">
               teacherseimetz@gmail.com
             </a>
           </nav>

@@ -1,149 +1,117 @@
-import { ButtonLink } from "./ButtonLink";
 import { Divider } from "./Divider";
+import { EnrollmentLink } from "./EnrollmentLink";
 import { Heading } from "./Heading";
-import { Highlight } from "./Highlight";
-import { Headphone } from "./icons/Headphone";
-import { Lightning } from "./icons/Lightning";
-import { Plane } from "./icons/Plane";
-import { Suitcase } from "./icons/Suitcase";
 import { Wrapper } from "./Wrapper";
-import Image from "next/image";
+import styles from "./Classes.module.css";
+
+const classOptions = [
+  {
+    title: "com a Amanda",
+    focus: "inglês profissional e avançado",
+    description:
+      "Para transformar o inglês que você já sabe em uma fala mais clara, precisa e segura.",
+    audiences: [
+      "Profissionais que usam inglês em reuniões, apresentações, e-mails e entrevistas.",
+      "Alunos de nível intermediário e avançado que querem ir além.",
+      "Quem entende inglês, mas sente insegurança na hora de falar.",
+    ],
+    delivery:
+      "Aulas, planejamento personalizado e acompanhamento diretamente comigo, a partir dos teus objetivos e da tua rotina.",
+    weekly: "620",
+    twiceWeekly: "1.080",
+    availability:
+      "Abro poucas vagas por vez. Se a agenda estiver completa, você pode aguardar na lista de espera.",
+  },
+  {
+    title: "com professor parceiro",
+    focus: "inglês para o dia a dia e viagens",
+    description:
+      "Para começar do zero, retomar os estudos ou ampliar o inglês que faz parte da tua vida.",
+    audiences: [
+      "Iniciantes que querem construir uma base com acompanhamento.",
+      "Alunos de outros níveis que querem se comunicar em viagens e no dia a dia.",
+      "Quem quer conversar mais e entender séries, músicas e outros conteúdos.",
+    ],
+    delivery:
+      "Aulas com professor fixo do meu time. Eu preparo o plano de aulas, acompanho tua evolução e faço um acompanhamento pedagógico mensal contigo.",
+    weekly: "520",
+    twiceWeekly: "910",
+    availability:
+      "Uma possibilidade para começar mais cedo, conforme a disponibilidade dos professores e dos teus horários.",
+  },
+];
 
 export function Classes() {
   return (
-    <section id="aulas">
-      <Wrapper variant="small">
+    <section id="aulas" aria-labelledby="aulas-title">
+      <Wrapper>
         <Heading>
-          <h1>aulas de inglês</h1>
+          <h2 id="aulas-title">um inglês que faz sentido para você</h2>
         </Heading>
 
-        <ul className="flex flex-col md:grid grid-cols-2 gap-4 justify-center mb-10 text-teal">
-          <li className="flex flex-row items-center gap-4">
-            <span className="bg-lime p-2 rounded-2xl size-16 flex justify-center items-center">
-              <Suitcase className="max-h-full fill-dark-green" />
-            </span>
-            material personalizado
-          </li>
-          <li className="flex flex-row items-center gap-4">
-            <span className="bg-lime p-2 rounded-2xl size-16 flex justify-center items-center">
-              <Plane className="max-h-full fill-dark-green" />
-            </span>
-            duração de 60 minutos
-          </li>
-          <li className="flex flex-row items-center gap-4">
-            <span className="bg-lime p-2 rounded-2xl size-16 flex justify-center items-center">
-              <Lightning className="max-h-full fill-dark-green" />
-            </span>
-            anotações e correções
-          </li>
-          <li className="flex flex-row items-center gap-4">
-            <span className="bg-lime p-2 rounded-2xl size-16 flex justify-center items-center">
-              <Headphone className="max-h-full fill-dark-green" />
-            </span>
-            Google Meet
-          </li>
-        </ul>
-
-        <p className="mb-8">
-          Esqueça os métodos rígidos. Aqui, o aprendizado acontece no seu tempo
-          e do seu jeito. Meu foco é ajudar alunos de nível intermediário e
-          avançado a dominarem o inglês do cotidiano. Para isso, ofereço:
+        <p className={styles.intro}>
+          Cada pessoa tem um motivo para aprender. Nas aulas comigo ou com um
+          professor parceiro, o ponto de partida é o mesmo: teus objetivos, teu
+          ritmo e um plano feito para você.
         </p>
 
-        <ul className="list-disc ml-4 mb-12">
-          <li className="mb-4">
-            Aulas Personalizadas: Planejadas exclusivamente para as suas
-            necessidades e objetivos.
-          </li>
+        <div className={styles.cards}>
+          {classOptions.map((option, index) => (
+            <article
+              className={`${styles.card} ${index === 0 ? styles.amanda : styles.partner}`}
+              key={option.title}
+            >
+              <header>
+                <p className={styles.eyebrow}>{option.focus}</p>
+                <h3>{option.title}</h3>
+                <p>{option.description}</p>
+              </header>
 
-          <li className="mb-4">
-            Materiais Dinâmicos e Divertidos: Nada de decoreba. Usamos conteúdos
-            reais e envolventes para praticar diversas competências de forma
-            fluida.
-          </li>
+              <ul className={styles.audiences}>
+                {option.audiences.map((audience) => (
+                  <li key={audience}>{audience}</li>
+                ))}
+              </ul>
 
-          <li className="mb-4">
-            Feedback Constante: Anotações e correções detalhadas para você
-            acompanhar sua evolução.
-          </li>
+              <div className={styles.delivery}>
+                <h4>Quem cuida do teu aprendizado?</h4>
+                <p>{option.delivery}</p>
+              </div>
 
-          <li className="mb-4">
-            Conveniência: Aulas de 60 minutos via Google Meet, onde você
-            estiver.
-          </li>
-        </ul>
+              <dl className={styles.prices}>
+                <div>
+                  <dt>1 aula por semana</dt>
+                  <dd>
+                    <strong>R$ {option.weekly}</strong>
+                    <span>/mês</span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>2 aulas por semana</dt>
+                  <dd>
+                    <strong>R$ {option.twiceWeekly}</strong>
+                    <span>/mês</span>
+                  </dd>
+                </div>
+              </dl>
 
-        <div className="flex justify-center mb-20">
-          <ButtonLink
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdr4AXJRU-Zf1PxlBkGx3SSiHILv3zSBk1vvK4zIfnQrlpZEw/viewform?usp=header"
-            target="_blank"
-          >
-            Quero fazer aulas de inglês
-          </ButtonLink>
+              <p className={styles.availability}>{option.availability}</p>
+            </article>
+          ))}
         </div>
 
-        <section className="flex flex-col md:flex-row items-center lg:items-start gap-10 mb-10">
-          <div>
-            <figure className="shrink-0 h-96 w-96 relative mb-10">
-              <Image
-                className="rounded-3xl"
-                src="/images/smiling-2.jpg"
-                alt="Foto da professora Amanda Seimetz sorrindo, com uma blusa verde e o fundo desfocado"
-                objectFit="cover"
-                fill
-              />
-            </figure>
+        <p className={styles.priceNote}>
+          Valores mensais para novos alunos. Incluem planejamento, materiais e
+          acompanhamento. A mensalidade é fixa, inclusive em meses com cinco
+          aulas.
+        </p>
 
-            <div className="flex justify-center mb-10">
-              <ButtonLink
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdr4AXJRU-Zf1PxlBkGx3SSiHILv3zSBk1vvK4zIfnQrlpZEw/viewform?usp=header"
-                target="_blank"
-              >
-                Quero fazer aulas de inglês
-              </ButtonLink>
-            </div>
-          </div>
-
-          <div>
-            <Highlight className="mb-10">
-              <p>
-                O Investimento para aulas particulares é mensal. O valor é fixo
-                mesmo em meses mais longos. O valor reduz apenas em caso de
-                feriados nacionais e aumenta em caso de aulas adicionais serem
-                agendadas.
-              </p>
-            </Highlight>
-
-            <ul className="flex flex-col lg:flex-row gap-8">
-              <li>
-                <article className="flex flex-col gap-3 bg-lilac text-dark-green rounded-3xl p-8">
-                  <h1 className="font-bold text-xl">
-                    1 aula particular por semana
-                  </h1>
-
-                  <h2 className="font-bold text-3xl text-white text-shadow-lg">
-                    R$ 540
-                  </h2>
-
-                  <p>inclui o planejamento, o material e acompanhamento.</p>
-                </article>
-              </li>
-              <li>
-                <article className="flex flex-col gap-3 bg-lilac text-dark-green rounded-3xl p-8">
-                  <h1 className="font-bold text-xl">
-                    2 aulas particulares por semana
-                  </h1>
-
-                  <h2 className="font-bold text-3xl text-white text-shadow-lg">
-                    R$ 920
-                  </h2>
-
-                  <p>inclui o planejamento, o material e acompanhamento.</p>
-                </article>
-              </li>
-            </ul>
-          </div>
-        </section>
+        <div className={styles.enrollment}>
+          <p>
+            Ainda não sabe qual opção escolher? Eu te ajudo na conversa inicial.
+          </p>
+          <EnrollmentLink />
+        </div>
         <Divider />
       </Wrapper>
     </section>

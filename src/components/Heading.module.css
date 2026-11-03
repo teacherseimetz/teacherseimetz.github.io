@@ -1,9 +1,11 @@
 .heading {
   padding: 16px 0;
-  margin-bottom: 64px;
+  margin-bottom: 2rem;
 
-  color: var(--color-teal);
+  color: var(--color-dark-green);
 
-  font-size: 56px;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  letter-spacing: -0.045em;
+  line-height: 1.15;
   text-transform: lowercase;
 }

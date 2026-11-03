@@ -4,8 +4,15 @@ type Props = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   inverse?: boolean;
 };
 
-export const ButtonLink = ({ children, inverse, className, ...props }: Props) => {
+export const ButtonLink = ({
+  children,
+  inverse,
+  className,
+  ...props
+}: Props) => {
   const classNames = [
+    "inline-flex",
+    "min-h-12",
     "bg-white",
     "text-dark-green",
     "font-bold",

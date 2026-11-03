@@ -1,4 +1,4 @@
-import { ButtonLink } from "./ButtonLink";
+import { EnrollmentLink } from "./EnrollmentLink";
 import styles from "./Hero.module.css";
 import { Logo } from "./Logo";
 import { VisuallyHidden } from "./VisuallyHidden";
@@ -10,39 +10,30 @@ export function Hero() {
     .join(" ");
 
   return (
-    <section className={backgroundClassNames}>
+    <section id="inicio" className={backgroundClassNames}>
       <Wrapper className={styles.wrapper}>
         <h1 className="flex flex-col gap-2">
           <span>
-            <Logo className="max-w-100 md:w-100" />
+            <Logo className={styles.logo} />
             <VisuallyHidden>Amanda Seimetz</VisuallyHidden>
           </span>
-          <span className="lowercase text-lime w-75">
-            Professora particular de Inglês & criadora de conteúdo para
-            professores
+          <span className={styles.tagline}>
+            Inglês para a tua carreira, tuas viagens e tua vida.
           </span>
         </h1>
+        <p className={styles.description}>
+          Aulas particulares online comigo e com meu time de professores
+          parceiros. Do primeiro passo à próxima conquista, com um plano feito
+          para você.
+        </p>
         <div className={styles.links}>
-          <ButtonLink
-            href="#aulas"
-            inverse
-          >
-            Aulas de Inglês
-          </ButtonLink>
-          <ButtonLink
-            href="#lessonplans"
-            rel="noreferrer noopener"
-            inverse
-          >
-            Lesson plans
-          </ButtonLink>
-          <ButtonLink
-            href="#eventos"
-            rel="noreferrer noopener"
-            inverse
-          >
-            Eventos
-          </ButtonLink>
+          <EnrollmentLink inverse />
+          <a href="#aulas" className={styles.explore}>
+            Conheça as opções de aulas <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+        <div className={styles.secondaryLinks}>
+          <a href="#eventos">Eventos presenciais</a>
         </div>
       </Wrapper>
     </section>

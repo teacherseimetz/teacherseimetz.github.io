@@ -1,0 +1,214 @@
+.intro {
+  max-width: 44rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.eyebrow {
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  list-style: none;
+}
+
+.stepNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  background: var(--color-lime);
+  font-weight: 700;
+}
+
+.steps h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.steps p {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+
+.support {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  background: var(--color-dark-green);
+  color: white;
+}
+
+.support .eyebrow {
+  color: var(--color-lime);
+}
+
+.support h3 {
+  max-width: 20rem;
+  font-size: 1.75rem;
+  line-height: 1.3;
+}
+
+.supportDetails {
+  display: grid;
+  gap: 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+
+.teachers {
+  display: grid;
+  gap: 2rem;
+}
+
+.teacher {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  overflow: hidden;
+  border: 1px solid rgb(35 62 63 / 20%);
+  border-radius: 1.5rem;
+}
+
+.portrait {
+  position: relative;
+  min-height: 17rem;
+}
+
+.portraitImage {
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+.teacherBio {
+  padding: 2rem;
+}
+
+.teacherBio h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.teacherBio .qualification {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.teacherBio > p:not(.eyebrow, .qualification) {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+
+.faq details {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgb(35 62 63 / 20%);
+}
+
+.faq details:first-child {
+  border-top: 1px solid rgb(35 62 63 / 20%);
+}
+
+.faq summary {
+  padding-right: 0.5rem;
+  cursor: pointer;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.faq summary::marker {
+  color: var(--color-dark-green);
+}
+
+.faq details p {
+  max-width: 47rem;
+  padding-top: 1rem;
+  line-height: 1.8;
+}
+
+.invitation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  background: var(--color-lime);
+  text-align: center;
+}
+
+.invitation .eyebrow {
+  margin-bottom: 0;
+}
+
+.invitation h3 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+}
+
+.invitation > p:not(.eyebrow) {
+  max-width: 35rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 63.99rem) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .support {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.75rem;
+  }
+
+  .teacher {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .teacherBio {
+    padding: 1.5rem;
+  }
+
+  .invitation {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 29.99rem) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .stepNumber {
+    margin-bottom: 0.75rem;
+  }
+}
