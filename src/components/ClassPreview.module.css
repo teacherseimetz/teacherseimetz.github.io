@@ -1,0 +1,1053 @@
+.section {
+  --call-cream: #faf6e9;
+  --call-ink: #293e3c;
+  --ease: cubic-bezier(0.22, 0.68, 0, 1);
+}
+.introduction {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.introduction > p {
+  max-width: 31rem;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+.teacherPicker {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+}
+.teacherPicker > span {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.teacherPicker > div {
+  display: flex;
+  gap: 0.375rem;
+  padding: 0.375rem;
+  border: 1px solid rgb(35 62 63 / 20%);
+  border-radius: 2rem;
+}
+.teacherPicker button {
+  min-height: 2.25rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition:
+    background 250ms,
+    color 250ms;
+}
+.teacherPicker button[aria-pressed="true"] {
+  background: var(--color-dark-green);
+  color: white;
+}
+.teacherPicker button:hover:not([aria-pressed="true"]) {
+  background: var(--color-lime);
+}
+.call {
+  overflow: hidden;
+  border: 1px solid #b1b8a7;
+  border-radius: 1.5rem;
+  background: var(--call-cream);
+  box-shadow:
+    0 8px 0 #e8ecdf,
+    0 18px 40px rgb(35 62 63 / 8%);
+}
+.callHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+  padding: 0.75rem 1.5rem;
+}
+.windowDots {
+  display: flex;
+  gap: 0.375rem;
+}
+.windowDots i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 1px solid #92a193;
+  border-radius: 50%;
+}
+.windowDots i:first-child {
+  background: var(--color-lime);
+}
+.callTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.callBadge {
+  font-size: 0.6875rem;
+  color: #55685b;
+}
+.callBody {
+  padding: 1rem 1.25rem 0.75rem;
+  background: #293f3d;
+  color: white;
+}
+.roomHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8125rem;
+}
+.liveDot {
+  width: 0.375rem;
+  height: 0.375rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-lime);
+}
+.sceneTitles {
+  position: relative;
+  flex: 1;
+  height: 1.5rem;
+  min-width: 0;
+}
+.sceneTitles > span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 400ms,
+    transform 600ms var(--ease);
+}
+.sceneTitles > span[data-active="true"] {
+  opacity: 1;
+  transform: none;
+  transition-delay: 150ms;
+}
+.sceneCount {
+  margin-left: auto;
+  color: #b2c5bd;
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.1em;
+}
+.stage {
+  position: relative;
+  height: 25rem;
+  isolation: isolate;
+}
+.videoGrid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.tile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(50% - 0.4375rem);
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 0.875rem;
+  background: #d9c7a3;
+  transition:
+    left 1100ms var(--ease),
+    top 1100ms var(--ease),
+    width 1100ms var(--ease),
+    height 1100ms var(--ease);
+}
+.studentTile {
+  left: calc(50% + 0.4375rem);
+  background: #a4bdc3;
+}
+
+.teacherTile {
+  z-index: 1;
+}
+.stage[data-sharing="true"] .tile {
+  left: calc(100% - 11rem);
+  width: 11rem;
+  height: calc(50% - 0.4375rem);
+}
+.stage[data-sharing="true"] .studentTile {
+  top: calc(50% + 0.4375rem);
+}
+.participant,
+.studentParticipant {
+  position: absolute;
+  inset: 0;
+}
+.studentParticipant {
+  opacity: 0;
+  transform: translateY(8px) scale(1.015);
+  transition:
+    opacity 1000ms,
+    transform 1500ms var(--ease);
+}
+.studentParticipant[data-active="true"] {
+  opacity: 1;
+  transform: none;
+  transition-delay: 150ms;
+}
+.character {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.roomArt {
+  position: absolute;
+  inset: 0;
+  background: url("/images/classroom/room.webp") center / cover;
+}
+.character[data-student="true"] .roomArt {
+  background-image: url("/images/classroom/student-room.webp");
+}
+.characterArt {
+  position: absolute;
+  bottom: -2%;
+  left: 50%;
+  height: 96%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  animation: portraitBreath 7s ease-in-out infinite;
+}
+
+.character[data-laughing="true"] .characterArt {
+  animation-name: laughBreath;
+  animation-duration: 1400ms;
+}
+.characterSet {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(5px);
+  transition:
+    opacity 800ms,
+    transform 1200ms var(--ease);
+}
+.characterSet[data-active="true"] {
+  opacity: 1;
+  transform: none;
+}
+.portraitPose {
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/classroom/portraits.webp");
+  background-size: 200% 400%;
+  background-repeat: no-repeat;
+  transition:
+    opacity 400ms var(--ease),
+    transform 650ms var(--ease);
+}
+.portraitLaugh {
+  opacity: 0;
+  transform: translateY(2px) rotate(-0.3deg);
+}
+.character[data-laughing="true"] .portraitRest {
+  opacity: 0;
+}
+.character[data-laughing="true"] .portraitLaugh {
+  opacity: 1;
+  transform: none;
+}
+.illustratedLaptop {
+  position: absolute;
+  bottom: -3%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 58%;
+  height: 18%;
+  border: 2px solid #8e9c90;
+  border-radius: 10% 10% 2% 2%;
+  background: #b6bca8;
+  box-shadow: inset 0 2px 0 #d7dcc5;
+  transform: translateX(-50%) perspective(400px) rotateX(-5deg);
+}
+.illustratedLaptop span {
+  color: #e6ecd6;
+  font-size: 1.5rem;
+}
+.speechStack {
+  position: absolute;
+  z-index: 2;
+  top: 1.25rem;
+  right: 1.25rem;
+  left: 1.25rem;
+  height: 3.5rem;
+}
+.speech {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  padding: 0.6875rem 1rem;
+  border: 1px solid rgb(72 59 42 / 12%);
+  border-radius: 1rem 1rem 1rem 0.25rem;
+  background: #fffdf6;
+  color: var(--call-ink);
+  box-shadow: 0 3px 0 rgb(35 62 63 / 8%);
+  font-size: clamp(0.75rem, 1.8vw, 1rem);
+  font-weight: 600;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(6px);
+  visibility: hidden;
+  transition:
+    opacity 450ms,
+    transform 650ms var(--ease),
+    visibility 0s 500ms;
+}
+.speech[data-active="true"] {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition-delay: 250ms, 150ms, 0s;
+}
+.studentSpeech {
+  right: 0;
+  left: auto;
+  border-radius: 1rem 1rem 0.25rem 1rem;
+  background: var(--color-lilac);
+}
+.studentSpeech[data-active="true"] {
+  transition-delay: 650ms, 500ms, 0s;
+}
+.participantLabel {
+  position: absolute;
+  z-index: 4;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.375rem;
+  padding: 0.5rem 0.6875rem;
+  border-radius: 0.5rem;
+  background: rgb(35 62 63 / 86%);
+  color: white;
+  font-size: 0.75rem;
+  opacity: 1;
+  transition:
+    opacity 700ms,
+    padding 1100ms;
+}
+.participantLabel[data-hidden="true"] {
+  opacity: 0;
+}
+.youLabel {
+  color: #d5e3d7;
+  font-size: 0.6875rem;
+}
+.audioBars {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 2px;
+  height: 1rem;
+}
+.audioBars i {
+  width: 2px;
+  height: 5px;
+  border-radius: 2px;
+  background: var(--color-lime);
+  animation: audioPulse 1200ms ease-in-out infinite alternate;
+}
+.audioBars i:nth-child(2) {
+  height: 11px;
+  animation-delay: 300ms;
+}
+.audioBars i:nth-child(3) {
+  height: 7px;
+  animation-delay: 600ms;
+}
+.waiting {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  color: #526c5c;
+  background: #e5eadb;
+  text-align: center;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  opacity: 0;
+  transition: opacity 800ms;
+}
+.waiting[data-active="true"] {
+  opacity: 1;
+}
+.waitingAvatar {
+  display: grid;
+  width: 4.5rem;
+  height: 4.5rem;
+  place-items: center;
+  border: 1px dashed #94b19c;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.waitingDots {
+  letter-spacing: 0.35em;
+  animation: waiting 1800ms ease-in-out infinite;
+}
+.felixWalk {
+  position: absolute;
+  z-index: 3;
+  bottom: -1.75rem;
+  left: 0;
+  width: 44%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-115%);
+}
+.felixWalk[data-active="true"] {
+  visibility: visible;
+  animation: catWalk 5200ms linear both;
+}
+.felixWalk > span {
+  position: absolute;
+  top: 16%;
+  right: 14%;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid rgb(35 62 63 / 10%);
+  border-radius: 0.5rem;
+  background: var(--color-lime);
+  color: var(--call-ink);
+  font-size: 0.625rem;
+  transform: rotate(-6deg);
+}
+.cat {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  filter: drop-shadow(0 3px 2px rgb(35 62 63 / 15%));
+}
+.catFrames {
+  position: absolute;
+  inset: 0;
+  background: url("/images/classroom/felix.webp") 0% 50% / 400% 100% no-repeat;
+  animation: catGait 720ms step-end infinite;
+}
+.stage[data-sharing="true"] .participantLabel {
+  right: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  font-size: 0.6875rem;
+}
+.stage[data-sharing="true"] .youLabel {
+  display: none;
+}
+.lesson {
+  position: absolute;
+  inset: 0 12rem 0 0;
+  overflow: hidden;
+  min-width: 0;
+  border: 1px solid #d8d4bf;
+  border-radius: 0.875rem;
+  background: var(--call-cream);
+  color: var(--call-ink);
+  opacity: 0;
+  transform: translateX(-18px) scale(0.985);
+  visibility: hidden;
+  transition:
+    opacity 600ms,
+    transform 1100ms var(--ease),
+    visibility 0s 1100ms;
+}
+.stage[data-sharing="true"] .lesson {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition-delay: 300ms, 150ms, 0s;
+}
+.lessonToolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #dce1ce;
+  color: #5d7060;
+  font-size: 0.6875rem;
+}
+.lessonToolbar svg {
+  width: 1rem;
+  height: 1rem;
+}
+.lessonPage {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+.lessonContent {
+  position: relative;
+  height: calc(100% - 2.8125rem);
+  padding: 1.25rem 2rem;
+}
+.lessonEyebrow {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.lessonDoodle {
+  position: absolute;
+  top: 1.75rem;
+  right: 2.25rem;
+  color: #9e8da8;
+  font-size: 4rem;
+  line-height: 1;
+}
+.lesson h3 {
+  margin-top: 0.75rem;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+.lessonPrompt {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+}
+.studentAnswer {
+  position: absolute;
+  top: 6.25rem;
+  right: 2rem;
+  width: 46%;
+  padding: 1rem 1.125rem;
+  border: 1px solid #b7b5b7;
+  border-radius: 0.75rem;
+  background: var(--color-lilac);
+  transform: rotate(-3deg);
+  box-shadow: 3px 4px 0 rgb(70 61 80 / 5%);
+}
+.studentAnswer > span {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.studentAnswer p {
+  margin-top: 0.75rem;
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  line-height: 2;
+}
+.answerCorrection {
+  position: relative;
+  display: inline-block;
+  min-width: 3.5em;
+}
+.originalWord {
+  position: relative;
+  transition: color 600ms;
+}
+.originalWord::after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  right: -0.05em;
+  left: -0.05em;
+  height: 2px;
+  background: #a36455;
+  transform: scaleX(0) rotate(-8deg);
+  transform-origin: left;
+  transition: transform 550ms var(--ease);
+}
+.correctedWord {
+  position: absolute;
+  top: -1em;
+  left: 0;
+  color: #456043;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(5px) rotate(-4deg);
+  transition:
+    opacity 600ms,
+    transform 900ms var(--ease);
+}
+.answerCorrection[data-corrected="true"] .originalWord {
+  color: #8d756c;
+}
+.answerCorrection[data-corrected="true"] .originalWord::after {
+  transform: scaleX(1) rotate(-8deg);
+}
+.answerCorrection[data-corrected="true"] .correctedWord {
+  opacity: 1;
+  transform: translateY(0) rotate(-4deg);
+  transition-delay: 450ms;
+}
+.feedbackNote {
+  position: absolute;
+  right: 2rem;
+  bottom: 1.25rem;
+  left: 2rem;
+  color: #526951;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(5px);
+  transition:
+    opacity 700ms,
+    transform 900ms var(--ease);
+}
+.feedbackNote[data-active="true"] {
+  opacity: 1;
+  transform: none;
+  transition-delay: 800ms;
+}
+.meetingFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  font-size: 0.6875rem;
+  color: #c3d1c5;
+}
+.meetControls {
+  display: flex;
+  gap: 0.5rem;
+}
+.meetControls > span {
+  display: grid;
+  width: 2.5rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 1.25rem;
+  background: #4d625e;
+  color: #f2f1de;
+}
+.meetControls > .hangup {
+  background: #bb735e;
+}
+.storyFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 8rem;
+  padding-top: 1.75rem;
+}
+.storyEyebrow {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #52685d;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.narration {
+  flex: 1;
+  min-width: 0;
+}
+.captionStack {
+  position: relative;
+  min-height: 3.2rem;
+}
+.captionStack p {
+  position: absolute;
+  inset: 0;
+  max-width: 34rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 450ms,
+    transform 650ms var(--ease);
+}
+.captionStack p[data-active="true"] {
+  opacity: 1;
+  transform: none;
+  transition-delay: 200ms;
+}
+.playbackControls {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.5rem;
+}
+.playbackControls button {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #b7c1b1;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: background 200ms;
+}
+.playbackControls button:hover {
+  background: var(--color-lime);
+}
+.playbackControls svg {
+  width: 1rem;
+  height: 1rem;
+}
+.sceneNavigation {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.sceneNavigation button {
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.5rem 0;
+  text-align: left;
+  cursor: pointer;
+}
+.sceneTrack {
+  display: block;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #e1e6dc;
+}
+.sceneTrack > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-dark-green);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.sceneTrack > .completedProgress {
+  transform: scaleX(1);
+}
+.sceneProgress {
+  animation: progress linear both;
+}
+.sceneLabel {
+  display: block;
+  margin-top: 0.625rem;
+  color: #647168;
+  font-size: 0.625rem;
+}
+.sceneNavigation button[aria-pressed="true"] .sceneLabel {
+  color: var(--color-dark-green);
+  font-weight: 700;
+}
+.illustrationNote {
+  margin-top: 1rem;
+  color: #52685d;
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+.call[data-playing="false"] *,
+.call[data-playing="false"] *::before,
+.call[data-playing="false"] *::after {
+  animation-play-state: paused !important;
+}
+.felixWalk[data-active="true"][data-still="true"] {
+  animation: none;
+  opacity: 1;
+  transform: translateX(35%);
+}
+@keyframes audioPulse {
+  from {
+    transform: scaleY(0.6);
+  }
+  to {
+    transform: scaleY(1.1);
+  }
+}
+
+@keyframes portraitBreath {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(1px);
+  }
+}
+
+@keyframes laughBreath {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0) rotate(-0.2deg);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-1px) rotate(0.2deg);
+  }
+}
+@keyframes waiting {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes catWalk {
+  0% {
+    opacity: 0;
+    transform: translateX(-115%);
+  }
+  8% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(225%);
+  }
+}
+@keyframes catGait {
+  0%,
+  24.99% {
+    background-position: 0% 50%;
+  }
+  25%,
+  49.99% {
+    background-position: 33.333333% 50%;
+  }
+  50%,
+  74.99% {
+    background-position: 66.666667% 50%;
+  }
+  75%,
+  100% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@media (max-width: 63.99rem) {
+  .introduction {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .storyFooter {
+    gap: 1rem;
+  }
+}
+@media (max-width: 47.99rem) {
+  .call {
+    border-radius: 1rem;
+  }
+  .callHeader {
+    padding: 0.75rem 1rem;
+  }
+  .windowDots {
+    display: none;
+  }
+  .callTitle {
+    font-size: 0.75rem;
+  }
+  .callBadge {
+    font-size: 0.5625rem;
+  }
+  .callBody {
+    padding: 0.75rem 0.625rem;
+  }
+  .roomHeading {
+    font-size: 0.6875rem;
+  }
+  .stage {
+    height: 27rem;
+  }
+  .tile {
+    width: calc(50% - 0.3125rem);
+    border-radius: 0.625rem;
+  }
+  .studentTile {
+    left: calc(50% + 0.3125rem);
+  }
+  .stage[data-sharing="true"] .tile {
+    top: calc(100% - 6.5rem);
+    left: 0;
+    width: calc(50% - 0.3125rem);
+    height: 6.5rem;
+  }
+  .stage[data-sharing="true"] .studentTile {
+    left: calc(50% + 0.3125rem);
+  }
+  .characterArt {
+    height: 86%;
+  }
+  .stage[data-sharing="true"] .characterArt {
+    height: 125%;
+    bottom: -22%;
+  }
+  .speechStack {
+    top: 0.75rem;
+    right: 0.625rem;
+    left: 0.625rem;
+  }
+  .speech {
+    padding: 0.5rem 0.625rem;
+    font-size: 0.75rem;
+  }
+  .studentSpeechStack {
+    top: 3.75rem;
+  }
+  .participantLabel {
+    right: 0.375rem;
+    bottom: 0.5rem;
+    left: 0.375rem;
+    padding: 0.4375rem 0.5rem;
+    font-size: 0.6875rem;
+  }
+  .youLabel {
+    display: none;
+  }
+  .felixWalk {
+    bottom: -1.75rem;
+    width: 70%;
+  }
+  .waitingAvatar {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  .waiting {
+    font-size: 0.6875rem;
+  }
+  .lesson {
+    inset: 0 0 7.125rem;
+    transform: translateY(-12px) scale(0.985);
+  }
+  .lessonToolbar {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.625rem;
+  }
+  .lessonContent {
+    height: calc(100% - 2.25rem);
+    padding: 0.875rem 1rem;
+  }
+  .lesson h3 {
+    max-width: 45%;
+    margin-top: 0.5rem;
+    font-size: 1.75rem;
+  }
+  .lessonDoodle {
+    top: 1.25rem;
+    right: 1rem;
+    font-size: 2.75rem;
+  }
+  .lessonPrompt {
+    max-width: 45%;
+    font-size: 0.625rem;
+    line-height: 1.5;
+  }
+  .studentAnswer {
+    top: 4.75rem;
+    right: 0.875rem;
+    width: 48%;
+    padding: 0.75rem;
+  }
+  .studentAnswer p {
+    font-size: 0.875rem;
+  }
+  .feedbackNote {
+    right: 1rem;
+    bottom: 0.75rem;
+    left: 1rem;
+    font-size: 0.625rem;
+  }
+  .meetingFooter {
+    padding-top: 0.75rem;
+    gap: 0.5rem;
+  }
+  .meetingFooter > span:last-child {
+    display: none;
+  }
+  .meetControls {
+    gap: 0.375rem;
+  }
+  .meetControls > span {
+    width: 2rem;
+    height: 1.75rem;
+  }
+  .meetControls svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  .storyFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-top: 1.5rem;
+  }
+  .narration {
+    width: 100%;
+  }
+  .captionStack {
+    min-height: 4.8rem;
+  }
+  .sceneNavigation {
+    gap: 0.375rem;
+  }
+  .sceneLabel {
+    display: none;
+  }
+  .sceneNavigation button {
+    padding: 1rem 0;
+  }
+}
+@media (max-width: 23rem) {
+  .teacherPicker button {
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+  }
+  .callBadge {
+    display: none;
+  }
+  .lesson h3 {
+    font-size: 1.5rem;
+  }
+  .studentAnswer {
+    right: 0.625rem;
+    padding: 0.5rem;
+  }
+  .studentAnswer p {
+    font-size: 0.75rem;
+  }
+  .lessonPage {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section *,
+  .section *::before,
+  .section *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .felixWalk[data-active="true"] {
+    opacity: 1;
+    transform: translateX(30%);
+  }
+  .feedbackNote[data-active="true"] {
+    opacity: 1;
+  }
+  .sceneTrack > .sceneProgress {
+    transform: scaleX(1);
+  }
+}

@@ -9,6 +9,7 @@ const links = [
   { href: "#sobre", label: "sobre mim" },
   { href: "#aulas", label: "aulas" },
   { href: "#como-funciona", label: "como funciona" },
+  { href: "#uma-aula", label: "uma aula" },
   { href: "#professores", label: "professores" },
   { href: "#eventos", label: "eventos" },
 ];
