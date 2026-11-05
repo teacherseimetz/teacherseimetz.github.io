@@ -1,8 +1,12 @@
+import { Caveat } from "next/font/google";
 import { EnrollmentLink } from "./EnrollmentLink";
+import { HandwrittenUnderline, TravelDoodle } from "./HeroDoodles";
 import styles from "./Hero.module.css";
 import { Logo } from "./Logo";
 import { VisuallyHidden } from "./VisuallyHidden";
 import { Wrapper } from "./Wrapper";
+
+const handwriting = Caveat({ subsets: ["latin"], weight: "500" });
 
 export function Hero() {
   const backgroundClassNames = ["bg-dark-green", "text-white", "mb-10"]
@@ -12,20 +16,23 @@ export function Hero() {
   return (
     <section id="inicio" className={backgroundClassNames}>
       <Wrapper className={styles.wrapper}>
-        <h1 className="flex flex-col gap-2">
+        <h1 className={styles.heading}>
           <span>
             <Logo className={styles.logo} />
             <VisuallyHidden>Amanda Seimetz</VisuallyHidden>
           </span>
           <span className={styles.tagline}>
-            Inglês para a tua carreira, tuas viagens e tua vida.
+            <span className={styles.firstLine}>
+              Inglês para a tua carreira,
+            </span>
+            tuas viagens{" "}
+            <span className={`${styles.handwritten} ${handwriting.className}`}>
+              <span className={styles.handwrittenText}>e tua vida.</span>
+              <HandwrittenUnderline className={styles.underline} />
+              <TravelDoodle className={styles.travelDoodle} />
+            </span>
           </span>
         </h1>
-        <p className={styles.description}>
-          Aulas particulares online comigo e com meu time de professores
-          parceiros. Do primeiro passo à próxima conquista, com um plano feito
-          para você.
-        </p>
         <div className={styles.links}>
           <EnrollmentLink inverse />
           <a href="#aulas" className={styles.explore}>
