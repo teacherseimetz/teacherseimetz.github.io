@@ -54,9 +54,28 @@ export function ClassroomCharacter({
         })}
       </div>
       <div className={styles.illustratedLaptop}>
-        <span>✳</span>
+        <ClassroomStar />
       </div>
     </div>
+  );
+}
+
+export function ClassroomStar({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width="1em"
+      height="1em"
+      viewBox="0 0 32 32"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M16 2V30M2 16H30M6 6L26 26M6 26L26 6" />
+    </svg>
   );
 }
 

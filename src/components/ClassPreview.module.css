@@ -137,8 +137,9 @@
   letter-spacing: 0.1em;
 }
 .stage {
+  --stage-height: 25rem;
   position: relative;
-  height: 25rem;
+  height: var(--stage-height);
   isolation: isolate;
 }
 .videoGrid {
@@ -147,6 +148,7 @@
   pointer-events: none;
 }
 .tile {
+  --portrait-size: calc(var(--stage-height) * 0.96);
   position: absolute;
   top: 0;
   left: 0;
@@ -172,6 +174,7 @@
   z-index: 1;
 }
 .stage[data-sharing="true"] .tile {
+  --portrait-size: calc((var(--stage-height) / 2 - 0.4375rem) * 0.96);
   left: calc(100% - 11rem);
   width: 11rem;
   height: calc(50% - 0.4375rem);
@@ -213,10 +216,15 @@
   position: absolute;
   bottom: -2%;
   left: 50%;
-  height: 96%;
-  aspect-ratio: 1;
+  /* Explicit dimensions keep resized sprite frames square in WebKit too. */
+  width: var(--portrait-size);
+  height: var(--portrait-size);
   transform: translateX(-50%);
   animation: portraitBreath 7s ease-in-out infinite;
+  transition:
+    width 1100ms var(--ease),
+    height 1100ms var(--ease),
+    bottom 1100ms var(--ease);
 }
 
 .character[data-laughing="true"] .characterArt {
@@ -271,7 +279,7 @@
   box-shadow: inset 0 2px 0 #d7dcc5;
   transform: translateX(-50%) perspective(400px) rotateX(-5deg);
 }
-.illustratedLaptop span {
+.illustratedLaptop svg {
   color: #e6ecd6;
   font-size: 1.5rem;
 }
@@ -517,6 +525,7 @@
   letter-spacing: -0.05em;
 }
 .lessonPrompt {
+  max-width: 45%;
   margin-top: 0.75rem;
   font-size: 0.75rem;
 }
@@ -871,9 +880,10 @@
     font-size: 0.6875rem;
   }
   .stage {
-    height: 27rem;
+    --stage-height: 27rem;
   }
   .tile {
+    --portrait-size: calc(var(--stage-height) * 0.86);
     width: calc(50% - 0.3125rem);
     border-radius: 0.625rem;
   }
@@ -881,6 +891,7 @@
     left: calc(50% + 0.3125rem);
   }
   .stage[data-sharing="true"] .tile {
+    --portrait-size: 8.125rem;
     top: calc(100% - 6.5rem);
     left: 0;
     width: calc(50% - 0.3125rem);
@@ -889,11 +900,7 @@
   .stage[data-sharing="true"] .studentTile {
     left: calc(50% + 0.3125rem);
   }
-  .characterArt {
-    height: 86%;
-  }
   .stage[data-sharing="true"] .characterArt {
-    height: 125%;
     bottom: -22%;
   }
   .speechStack {
@@ -952,7 +959,6 @@
     font-size: 2.75rem;
   }
   .lessonPrompt {
-    max-width: 45%;
     font-size: 0.625rem;
     line-height: 1.5;
   }

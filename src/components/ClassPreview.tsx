@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   CallIcon,
   ClassroomCharacter,
+  ClassroomStar,
   Felix,
   TeacherName,
 } from "./ClassroomIllustrations";
@@ -375,9 +376,7 @@ export function ClassPreview() {
                   <span className={styles.lessonEyebrow}>
                     a little bit of your life
                   </span>
-                  <span className={styles.lessonDoodle} aria-hidden="true">
-                    ✳
-                  </span>
+                  <ClassroomStar className={styles.lessonDoodle} />
                   <h3>
                     {lesson.title[0]}
                     <br />
