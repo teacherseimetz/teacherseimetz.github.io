@@ -11,6 +11,7 @@ const links = [
   { href: "#como-funciona", label: "como funciona" },
   { href: "#uma-aula", label: "uma aula" },
   { href: "#professores", label: "professores" },
+  { href: "#consultoria", label: "consultoria" },
   { href: "#eventos", label: "eventos" },
 ];
 

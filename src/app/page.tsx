@@ -1,6 +1,7 @@
 import { About } from "../components/About";
 import { Classes } from "../components/Classes";
 import { ClassPreview } from "../components/ClassPreview";
+import { Consulting } from "../components/Consulting";
 import { Events } from "../components/Events";
 import { Faq } from "../components/Faq";
 import { Hero } from "../components/Hero";
@@ -17,6 +18,7 @@ export default function Page() {
       <ClassPreview />
       <Teachers />
       <Faq />
+      <Consulting />
       <Events />
     </main>
   );
