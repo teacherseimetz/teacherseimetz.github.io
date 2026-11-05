@@ -28,30 +28,32 @@ export function ClassroomCharacter({
     >
       <div className={styles.roomArt} />
       <div className={styles.characterArt}>
-        {people.map((name) => {
-          const row = portraits.indexOf(name as (typeof portraits)[number]);
-          const position = `${(row / 3) * 100}%`;
-          return (
-            <div
-              key={name}
-              className={styles.characterSet}
-              data-active={name === person}
-            >
+        <div className={styles.portraitFrame}>
+          {people.map((name) => {
+            const row = portraits.indexOf(name as (typeof portraits)[number]);
+            const position = `${(row / 3) * 100}%`;
+            return (
               <div
-                className={`${styles.portraitPose} ${styles.portraitRest}`}
-                style={
-                  { backgroundPosition: `0% ${position}` } as CSSProperties
-                }
-              />
-              <div
-                className={`${styles.portraitPose} ${styles.portraitLaugh}`}
-                style={
-                  { backgroundPosition: `100% ${position}` } as CSSProperties
-                }
-              />
-            </div>
-          );
-        })}
+                key={name}
+                className={styles.characterSet}
+                data-active={name === person}
+              >
+                <div
+                  className={`${styles.portraitPose} ${styles.portraitRest}`}
+                  style={
+                    { backgroundPosition: `0% ${position}` } as CSSProperties
+                  }
+                />
+                <div
+                  className={`${styles.portraitPose} ${styles.portraitLaugh}`}
+                  style={
+                    { backgroundPosition: `100% ${position}` } as CSSProperties
+                  }
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
       <div className={styles.illustratedLaptop}>
         <ClassroomStar />

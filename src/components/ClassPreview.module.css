@@ -214,12 +214,18 @@
 }
 .characterArt {
   position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.portraitFrame {
+  position: relative;
+  flex-shrink: 0;
   bottom: -2%;
-  left: 50%;
-  /* Explicit dimensions keep resized sprite frames square in WebKit too. */
+  /* Layout centers the frame independently of its animated transforms. */
   width: var(--portrait-size);
   height: var(--portrait-size);
-  transform: translateX(-50%);
   animation: portraitBreath 7s ease-in-out infinite;
   transition:
     width 1100ms var(--ease),
@@ -227,7 +233,7 @@
     bottom 1100ms var(--ease);
 }
 
-.character[data-laughing="true"] .characterArt {
+.character[data-laughing="true"] .portraitFrame {
   animation-name: laughBreath;
   animation-duration: 1400ms;
 }
@@ -780,20 +786,20 @@
 @keyframes portraitBreath {
   0%,
   100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
   50% {
-    transform: translateX(-50%) translateY(1px);
+    transform: translateY(1px);
   }
 }
 
 @keyframes laughBreath {
   0%,
   100% {
-    transform: translateX(-50%) translateY(0) rotate(-0.2deg);
+    transform: translateY(0) rotate(-0.2deg);
   }
   50% {
-    transform: translateX(-50%) translateY(-1px) rotate(0.2deg);
+    transform: translateY(-1px) rotate(0.2deg);
   }
 }
 @keyframes waiting {
@@ -900,7 +906,7 @@
   .stage[data-sharing="true"] .studentTile {
     left: calc(50% + 0.3125rem);
   }
-  .stage[data-sharing="true"] .characterArt {
+  .stage[data-sharing="true"] .portraitFrame {
     bottom: -22%;
   }
   .speechStack {
