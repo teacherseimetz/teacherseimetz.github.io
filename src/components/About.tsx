@@ -10,12 +10,16 @@ export function About() {
         aria-labelledby="sobre-title"
         className="flex flex-col lg:flex-row justify-between items-center gap-10 mb-10 pt-10"
       >
-        <figure className="shrink-0 aspect-square w-full max-w-96 relative">
+        <figure className="shrink-0 aspect-square w-full max-w-96 relative overflow-hidden rounded-3xl">
           <Image
-            className="rounded-3xl"
-            src="/images/smiling.jpg"
-            alt="Foto da professora Amanda Seimetz sorrindo, com uma blusa verde e o fundo desfocado"
-            style={{ objectFit: "cover" }}
+            src="/images/amanda-profile.jpg"
+            alt="Amanda Seimetz sorrindo, de óculos e casaco escuro, em uma ponte"
+            style={{
+              objectFit: "cover",
+              objectPosition: "center 20%",
+              transform: "scale(1.2)",
+              transformOrigin: "85% 20%",
+            }}
             sizes="(max-width: 480px) calc(100vw - 48px), 384px"
             fill
           />
